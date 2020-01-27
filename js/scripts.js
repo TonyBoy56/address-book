@@ -1,27 +1,3 @@
-// Contact.prototype.fullName = function() {
-//     return this.firstName + " " + this.lastName;
-// }
-
-// var testContact = new Contact("Ada", "Lovelace", "5-3=555=1111");
-
-// testContact.fullName();
-
-
-// var pdx = { name: "Portland" };
-// var sfo = { name: "San Francisco "};
-// var sea = { name: "Seattle" };
-// var cso = { name: "Aktau" };
-// var dzn = { name: "Zhezkazgan" };
-
-// var usa = { name: "United States of America", cities: [pdx, sfo, sea] };
-// var kazakhstan = {name: "kazakhstan" cities [cso, dzn] };
-// var uruguay = { name: "uruguay", cities: [] };
-
-// usa.cities.forEach(function(fcity) {
-//     console.log("lets go to " + city.name + "!");
-// })
-
-
 // Business-logic for Address book //
 function AddressBook() {
     // "this." referes to the "contacts" of this Addressbook //
@@ -37,9 +13,18 @@ AddressBook.prototype.addContact = function(contact) {
     this.contacts.push(contact);
 }
 
+AddressBook.prototype.findContact = function(id) {
+    for (var i=0; i < this.contacts.length; i++) {
+        if (this.contacts[i].id == id) {
+            return this.contacts[i];
+        }
+    };
+    return false;
+}
+
 AddressBook.prototype.assignId = function() {
     this.currentId += 1;
-    return this.assignId.currentId;
+    return this.currentId;
 }
 // Business-logic for Contacts //
 function Contact(firstName, lastName, phoneNumber) {
@@ -51,3 +36,11 @@ function Contact(firstName, lastName, phoneNumber) {
 Contact.prototype.fullname = function() {
     return this.firstName + " " + this.lastName;
 }
+
+var addressBook = new AddressBook();
+var contact = new Contact("Ada", "Lovelace",  "503-555-0100");
+var contact2 = new Contact("Grace", "hopper", "503-555-0199");
+addressBook.addContact(contact);
+addressBook.addContact(contact2);
+
+
