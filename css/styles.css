@@ -1,0 +1,4 @@
+#show-contact {
+  display: none;
+}
+/* This ensures the show-contact div is hidden until we later activate jQuery to display it. (This area will later display details of a Contact when one is selected from the list.) */
